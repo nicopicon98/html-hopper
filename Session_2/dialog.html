@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Formulario con Dialog</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const dialog = document.querySelector('dialog');
+            const openButton = document.querySelector('#open');
+            const closeButton = document.querySelector('#close');
+
+            openButton.addEventListener('click', () => {
+                dialog.showModal();
+            });
+
+            closeButton.addEventListener('click', () => {
+                dialog.close();
+            });
+
+            // Manejador para el evento submit del formulario
+            dialog.addEventListener('submit', (e) => {
+                e.preventDefault(); // Previene el envío del formulario
+                console.log("Formulario enviado");
+                // Aquí puedes manejar los datos del formulario como necesites
+                dialog.close(); // Cierra el dialog
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <button id="open">Abrir Diálogo</button>
+
+    <dialog>
+        <form method="post">
+            <p><label>Nombre: <input type="text" name="name"></label></p>
+            <p><label>Email: <input type="email" name="email"></label></p>
+            <p><button type="submit">Enviar</button></p>
+            <p><button type="button" id="close">Cerrar</button></p>
+        </form>
+    </dialog>
+
+</body>
+
+</html>
